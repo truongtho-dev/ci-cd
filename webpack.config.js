@@ -1,4 +1,5 @@
 const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: { index: path.resolve(__dirname, "src", "index.js") },
@@ -13,5 +14,9 @@ module.exports = {
         use: ["babel-loader"],
       },
     ],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
   },
 };
